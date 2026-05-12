@@ -66,3 +66,54 @@ LEFT JOIN itens_pedido as i
 WHERE i.id_pedido IS NULL
 ORDER BY preco DESC;
 
+-- =====================================================
+-- CONSULTA 6
+-- OBJETIVO: Calcular faturamento total do sistema
+-- =====================================================
+SELECT
+	ROUND(SUM(i.quantidade * i.preco_unitario), 2) AS faturamento_total
+FROM itens_pedido AS i;
+
+
+-- =====================================================
+-- CONSULTA 7
+-- OBJETIVO: Calcular faturamento por pedido
+-- =====================================================
+SELECT
+	p.id_pedido,
+    p.data_pedido,
+    ROUND(SUM(i.quantidade * i.preco_unitario), 2) AS faturamento_pedido
+FROM pedidos p
+INNER JOIN itens_pedido i 
+	ON p.id_pedido = i.id_pedido
+GROUP BY p.id_pedido, p.data_pedido;
+
+
+-- =====================================================
+-- CONSULTA 8
+-- OBJETIVO: Mostrar quantidade total vendida por produto 
+-- =====================================================
+SELECT
+	i.id_produto,
+    prod.nome as nome_produto,
+    sum(i.quantidade) as qtd_vendas_prod
+FROM itens_pedido as i
+INNER JOIN produtos as prod 
+	ON i.id_produto = prod.id_produto
+GROUP BY i.id_produto, prod.nome
+ORDER BY qtd_vendas_prod DESC;
+
+
+-- =====================================================
+-- CONSULTA 9
+-- OBJETIVO: Identificar produtos com maior faturamento
+-- =====================================================
+SELECT
+	i.id_produto,
+    prod.nome as nome_produto,
+    ROUND(SUM(i.quantidade * i.preco_unitario), 2) AS faturamento_produto
+FROM itens_pedido as i
+INNER JOIN produtos as prod 
+	ON i.id_produto = prod.id_produto
+GROUP BY i.id_produto
+ORDER BY faturamento_produto DESC;
