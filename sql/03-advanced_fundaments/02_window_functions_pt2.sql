@@ -1,6 +1,6 @@
 -- =========================================================================
 -- CONSULTA 1
--- OBJETIVO: Faturamento mês anteriot
+-- OBJETIVO: Faturamento mês anterior
 -- =========================================================================
 WITH faturamento_mensal as (
 	SELECT
@@ -75,7 +75,7 @@ SELECT
 	fm.faturamento,
     SUM(faturamento)
 		over(
-			order by ano, mes
+			order by ano, mes 
         ) as fatur_acumulado
 FROM faturamento_mensal as fm;
 
