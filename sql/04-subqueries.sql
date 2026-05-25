@@ -25,8 +25,10 @@ SELECT
 	c.nome as cliente,
 	SUM(ip.preco_unitario * ip.quantidade) as faturamento_cliente
 FROM clientes as c 
-	INNER JOIN pedidos as ped ON ped.id_cliente = c.id_cliente
-	INNER JOIN itens_pedido as ip ON ped.id_pedido = ip.id_pedido
+	INNER JOIN pedidos as ped 
+		ON ped.id_cliente = c.id_cliente
+	INNER JOIN itens_pedido as ip 
+		ON ped.id_pedido = ip.id_pedido
 WHERE ped.status = 'Confirmado'
 GROUP BY c.id_cliente, c.nome
 HAVING SUM(ip.preco_unitario * ip.quantidade) > (
