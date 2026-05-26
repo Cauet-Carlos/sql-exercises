@@ -15,8 +15,8 @@ WITH faturmento_clientes as (
 			ON c.id_cliente = ped.id_cliente
 		INNER JOIN itens_pedido as ip
 			ON ped.id_pedido = ip.id_pedido
-WHERE ped.status = 'Confirmado'
-GROUP BY c.id_cliente, c.nome
+	WHERE ped.status = 'Confirmado'
+	GROUP BY c.id_cliente, c.nome
 )
 SELECT
 	fc.id,
@@ -41,8 +41,8 @@ WITH faturamentos_mensais as (
     FROM pedidos as ped	
 		INNER JOIN itens_pedido as ip
 			ON ped.id_pedido = ip.id_pedido
-WHERE ped.status = 'Confirmado'
-GROUP BY YEAR(ped.data_pedido), MONTH(ped.data_pedido)
+	WHERE ped.status = 'Confirmado'
+	GROUP BY YEAR(ped.data_pedido), MONTH(ped.data_pedido)
 )
 SELECT
 	fm.ano,
@@ -69,8 +69,8 @@ WITH faturamentos_produtos as (
 			ON prod.id_produto = ip.id_produto
 		INNER JOIN pedidos as ped
 			ON ip.id_pedido = ped.id_pedido
-WHERE ped.status = 'Confirmado'
-GROUP BY prod.id_produto, prod.nome
+	WHERE ped.status = 'Confirmado'
+	GROUP BY prod.id_produto, prod.nome
 ),
 media_produtos as (
 	SELECT
