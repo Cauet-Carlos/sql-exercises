@@ -3,7 +3,7 @@
 -- =================================================================
 
 -- ========================================================================
--- Clientes_vip
+-- Clientes vip
 -- ========================================================================
 WITH faturamento_clientes as (
 	SELECT
@@ -61,7 +61,7 @@ SELECT
 FROM faturamento_produtos;
 
 -- ========================================================================
--- Analise cancelamentos
+-- Analise de cancelamentos
 -- ========================================================================
 WITH total_cancelamentos_cliente as (
 	SELECT
@@ -118,7 +118,7 @@ SELECT
 FROM analise_faturamento;
 
 -- ========================================================================
--- Segmentação clientes
+-- Segmentação dos clientes
 -- ========================================================================
 WITH faturamento_clientes as (
 	SELECT
@@ -145,7 +145,7 @@ FROM faturamento_clientes
 ORDER BY faturamento DESC;
 
 -- ========================================================================
--- Ticket médio clientes
+-- Ticket médio dos clientes
 -- ========================================================================
 WITH ticket_medio_clientes AS (
     SELECT

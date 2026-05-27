@@ -70,7 +70,7 @@ WHERE prod.preco between 100 and 1000
 ORDER BY preco DESC;
 
 -- =====================================================
--- Ex8 - pedidos cancelados ou pendentes
+-- Ex8 - Pedidos cancelados ou pendentes
 -- =====================================================
 SELECT
 	ped.id_pedido,
